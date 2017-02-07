@@ -1,0 +1,44 @@
+/*DCE Tools CSS */
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12pt;
+  margin: 10px;
+}
+
+table {
+color: #333;
+
+width: 640px;
+border-collapse:
+collapse; border-spacing: 0;
+}
+
+td, th { border: 1px solid #9E9E9E; height: 30px; }
+
+th {
+background: #F3F3F3;
+font-weight: bold;
+}
+
+td {
+background: #FAFAFA;
+text-align: center;
+}
+
+thead td{
+   background-color: #000000;
+   color: #FFFFFF;
+}
+
+tr.sectionfields td {
+    background: #BDE9FF;
+}
+
+tr.dcesectionfield td {
+    background: #00A3F5;
+}
+
+tr.dcetabfield td {
+    background: #CCCCCC;
+}
