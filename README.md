@@ -30,7 +30,6 @@ Bitte dazu vorher die Datei **settings.template.php in settings.php umbenennen**
 
 ## Screeenshots
 1. Startseite
-
 ![Startseite](/doku/img/start.JPG)
 2. Auswahl der Quell- und Zieldatenbank
 ![DB Auswahl](/doku/img/s1.JPG)
