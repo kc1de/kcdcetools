@@ -1,7 +1,7 @@
 # kcdcetools
 
 ##Algemein
-Kcdcetools sind ein Tool um Dynamic Content Elements (DCE) von einer TYPO3 Insanz in eine andere zu kopieren. 
+Kcdcetools sind ein Tool um Dynamic Content Elements (DCE) von einer TYPO3 Instanz in eine andere zu kopieren. 
 DCE ist eine TYPO3 Extension die es einem erlaubt eigene Content-Elemente zu erstellen. 
 Dazu werden die benötigten Felder für das Backend definiert und ein Fluid Template für die Frontendausgabe definiert. 
 Im Moment gibt es bei der Extension noch keine Exportmöglichkeit um bereits erstellte DCE zu exportieren 
