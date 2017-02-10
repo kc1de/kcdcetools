@@ -28,3 +28,14 @@ Sollte der Server vom Internet aus zu erreichen sein, muss das Verzeichnis noch 
 ACHTUNG: Die Credentials für die Datenbankverbindung sind in der Datei settings.php anzugeben.
 Bitte dazu vorher die Datei **settings.template.php in settings.php umbenennen**. 
 
+## Screeenshots
+1. Startseite
+![Startseite](/doku/img/start.JPG)
+2. Auswahl der Quell- und Zieldatenbank
+![DB Auswahl](/doku/img/s1.JPG)
+3. Auswahl des zu kopierenden DCE
+![DCE Auswahl](/doku/img/s2.JPG)
+4. Kontrolle des ausgewählten DCE
+![Kontrollseite](/doku/img/s3.JPG)
+5. Ergebnisseite des Kopiervorgangs
+![Ergebnisseite](/doku/img/s4.JPG)
