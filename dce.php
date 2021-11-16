@@ -13,7 +13,7 @@ executenonquery($sourceconn,$sql);
 $sql = "SET NAMES 'utf8';";
 executenonquery($sourceconn,$sql);
 
-$sql = "SELECT * FROM `tx_dce_domain_model_dcefield` WHERE parent_dce = ".$sourcedce." Order By sorting;";
+$sql = "SELECT * FROM `tx_dce_domain_model_dcefield` WHERE deleted=0 and parent_dce = ".$sourcedce." Order By sorting;";
 $sourceresult = getresult($sourceconn,$sql);
 
 $dcerows = array();
@@ -75,7 +75,7 @@ echo "<h3>DCE Elemente</h3>\n";
 function getSectionFields($parent,$conn,$showoutput)
 {
 $sectionrows = array();
-$sql = "SELECT * FROM `tx_dce_domain_model_dcefield` WHERE parent_field = ".$parent." Order By sorting;";
+$sql = "SELECT * FROM `tx_dce_domain_model_dcefield` WHERE deleted=0 and  parent_field = ".$parent." Order By sorting;";
 
 $result = getresult($conn,$sql);
 
@@ -130,7 +130,7 @@ executenonquery($sourceconn,$sql);
 $sql = "SET NAMES 'utf8';";
 executenonquery($sourceconn,$sql);
 
-$sql = "SELECT * FROM tx_dce_domain_model_dce where uid=". $sourcedce .";";
+$sql = "SELECT * FROM tx_dce_domain_model_dce where  deleted=0 and  uid=". $sourcedce .";";
 $sourceresult = getresult($sourceconn,$sql);
 if ($sourceresult->num_rows > 0) {
     // output data of each row
@@ -160,10 +160,9 @@ $sql="INSERT INTO `tx_dce_domain_model_dce`(
 , `template_partial_root_path`, `palette_fields`, `enable_detailpage`, `detailpage_identifier`, `detailpage_template_type`
 , `detailpage_template`, `detailpage_template_file`, `enable_container`, `container_item_limit`, `container_template_type`
 , `container_template`, `container_template_file`, `tstamp`, `crdate`, `cruser_id`
-, `deleted`, `hidden`, `starttime`, `endtime`, `sorting`
-, `t3ver_oid`, `t3ver_id`, `t3ver_wsid`, `t3ver_label`, `t3ver_state`
+, `deleted`, `hidden`,  `sorting`
+, `t3ver_oid`,  `t3ver_wsid`,  `t3ver_state`
 , `t3ver_stage`, `t3ver_count`, `t3ver_tstamp`, `t3ver_move_id`, `t3_origuid`
-, `sys_language_uid`, `l10n_parent`, `l10n_diffsource`
 )
 VALUES (" .
 $targetconn->real_escape_string($dcerow['pid'])
@@ -248,20 +247,12 @@ $targetconn->real_escape_string($dcerow['pid'])
 . ","
 . $targetconn->real_escape_string($dcerow['hidden'])
 . ","
-. $targetconn->real_escape_string($dcerow['starttime'])
-. ","
-. $targetconn->real_escape_string($dcerow['endtime'])
-. ","
 . $targetconn->real_escape_string($dcerow['sorting'])
 . ","
 . $targetconn->real_escape_string($dcerow['t3ver_oid'])
 . ","
-. $targetconn->real_escape_string($dcerow['t3ver_id'])
-. ","
 . $targetconn->real_escape_string($dcerow['t3ver_wsid'])
-. ",'"
-. $targetconn->real_escape_string($dcerow['t3ver_label'])
-. "',"
+. ","
 . $targetconn->real_escape_string($dcerow['t3ver_state'])
 . ","
 . $targetconn->real_escape_string($dcerow['t3ver_stage'])
@@ -273,13 +264,7 @@ $targetconn->real_escape_string($dcerow['pid'])
 . $targetconn->real_escape_string($dcerow['t3ver_move_id'])
 . ","
 . $targetconn->real_escape_string($dcerow['t3_origuid'])
-. ","
-. $targetconn->real_escape_string($dcerow['sys_language_uid'])
-. ","
-. $targetconn->real_escape_string($dcerow['l10n_parent'])
-. ",'"
-. $targetconn->real_escape_string($dcerow['l10n_diffsource'])
-. "')";
+. ")";
 
 $lastid=insertandgetid($targetconn,$sql);
 return $lastid;
@@ -297,10 +282,10 @@ $sql="INSERT INTO `tx_dce_domain_model_dcefield`(
  `pid`, `title`, `variable`, `type`
 , `configuration`, `map_to`, `new_tca_field_name`, `new_tca_field_type`, `section_fields`
 , `section_fields_tag`, `parent_dce`, `parent_field`, `tstamp`, `crdate`
-, `cruser_id`, `deleted`, `hidden`, `starttime`, `endtime`
-, `sorting`, `t3ver_oid`, `t3ver_id`, `t3ver_wsid`, `t3ver_label`
+, `cruser_id`, `deleted`, `hidden` 
+, `sorting`, `t3ver_oid`,  `t3ver_wsid`
 , `t3ver_state`, `t3ver_stage`, `t3ver_count`, `t3ver_tstamp`, `t3ver_move_id`
-, `t3_origuid`, `sys_language_uid`, `l10n_parent`, `l10n_diffsource`
+, `t3_origuid`
 ) VALUES ("
 . $targetconn->real_escape_string($dcerow['pid'])
 . ",'"
@@ -336,20 +321,12 @@ $sql="INSERT INTO `tx_dce_domain_model_dcefield`(
 . ","
 . $targetconn->real_escape_string($dcerow['hidden'])
 . ","
-. $targetconn->real_escape_string($dcerow['starttime'])
-. ","
-. $targetconn->real_escape_string($dcerow['endtime'])
-. ","
 . $targetconn->real_escape_string($dcerow['sorting'])
 . ","
 . $targetconn->real_escape_string($dcerow['t3ver_oid'])
 . ","
-. $targetconn->real_escape_string($dcerow['t3ver_id'])
-. ","
 . $targetconn->real_escape_string($dcerow['t3ver_wsid'])
-. ",'"
-. $targetconn->real_escape_string($dcerow['t3ver_label'])
-. "',"
+. ","
 . $targetconn->real_escape_string($dcerow['t3ver_state'])
 . ","
 . $targetconn->real_escape_string($dcerow['t3ver_stage'])
@@ -361,13 +338,7 @@ $sql="INSERT INTO `tx_dce_domain_model_dcefield`(
 . $targetconn->real_escape_string($dcerow['t3ver_move_id'])
 . ","
 . $targetconn->real_escape_string($dcerow['t3_origuid'])
-. ","
-. $targetconn->real_escape_string($dcerow['sys_language_uid'])
-. ","
-. $targetconn->real_escape_string($dcerow['l10n_parent'])
-. ",'"
-. $targetconn->real_escape_string($dcerow['l10n_diffsource'])
-. "')";
+. ")";
 
 $lastid=insertandgetid($targetconn,$sql);
 return $lastid;
